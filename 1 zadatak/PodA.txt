@@ -1,0 +1,13 @@
+CHIP PodA
+{
+ IN a, b;
+ OUT out;
+
+ PARTS:
+
+   And(a= a, b=b, out = out1 )
+   Not(a = out1, out = out)
+
+
+
+}
