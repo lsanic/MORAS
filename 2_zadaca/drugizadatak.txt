@@ -1,0 +1,13 @@
+CHIP MultHalf
+{  PARTS:
+
+  IN  a[16], b[16]
+  OUT out[16]
+    //////// biramo predznak
+    Xor(a= a[15] , b=[15] , out = out[15])
+///eksponent racunamo kao A exp + B exp - 127 da nemamo overflow
+
+
+////mantisu racunamo kao umnozak a i b mantise
+}
+

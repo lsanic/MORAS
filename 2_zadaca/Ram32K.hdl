@@ -1,0 +1,35 @@
+CHIP Ram32K
+{
+  IN in[16], addr[15], load;
+  OUT out[16];
+
+  PARTS:
+
+  /// po uzoru na implementaciju Ram16k koji radimo pomocu
+  /// Ram4K  podijelimo problem na 16 + 16
+
+  //// DMux u ovisnosti o sel postavlja a na input, b na nulu ako je sel = 0
+  /// ili b na input, a a na nulu inace
+
+
+  DMux(in=load,sel=addr[14],a=a,b=b);
+
+
+  ///u ovisnosti o to dvoje, kreiramo dva slucaja pomocu ram16k
+
+  RAM16K(in=in,load=a,address=address[0..13],out=output1);
+  RAM16K(in=in,load=b,address=address[0..13],out=output2);
+
+
+  /// pomocu addr[14] biramo koji nam ram16k odgovara
+
+  Mux16(a=output1, b=output2 , sel=address[14],out=out);
+
+
+///za 16 pise:
+///Memory of 16K registers, each 16 bit-wide. Out holds the value
+ //stored at the memory location specified by address. If load=1, then 
+ // the in value is loaded into the memory location specified by address 
+ // (the loaded value will be emitted to out after the next time step.)
+
+}
