@@ -1,0 +1,48 @@
+function mid 3
+        /// a i b
+	push argument 0 
+        push argument 1 
+        lt /// a < b
+        if-goto L1 
+		push argument 0  // a
+		push argument 2  // c
+		lt /// a<c
+		if-goto L2 
+                        push argument 1 /// b
+                        push argument 2 // c
+                        lt /// b < c
+                        if-goto L4 
+                        	push argument 1 //b
+				return /// vraca nam b
+
+/// provjeravamo vrijedi li a<b i a<c
+label L1
+	push argument 0 /// uzmi a
+	push argument 2 // uzmi c
+	lt // a<c
+        /// ako je, provjeravamo odnos b i c preko L3 tj vrijedi li : a < c < b
+	if-goto L3 // a<c
+		push argument 0 /// ako ne vrijedi a<b i a<c => c < a < b 
+		return /// pa vracamo a
+
+/// ako vrijedi b<a i c<a provjeravamo b<c, ukoliko vrijedi, imamo: b < c < a pa preko L4 vratimo c, inace imamo c<b<a pa vratimo b
+label L2
+	push argument 0 // a
+	return // a
+
+label L3
+	push argument 2 // c
+	push argument 1 // b
+	lt // c < b
+	if-goto L5
+		push argument 1 // b
+		return
+
+label L4
+	push argument 2 /// c
+	return
+
+label L5
+	push argument 2 // c
+	return
+		

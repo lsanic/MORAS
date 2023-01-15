@@ -1,0 +1,25 @@
+function div 2      // div(N, D)
+
+    push constant 0
+    pop local 0      // Q postavimo na  0
+    push argument 0   
+    pop local 1      // R postavimo na N
+
+label LOOP 
+    push local 1       // R
+    push argument 1    // D
+    lt // R < D
+    if-goto L    // R < D
+        push local 0   // Q
+        push constant 1 
+        add     // inkrementiramo Q za 1
+        pop local 0    // Q postavimo na  (Q + 1)
+        push local 1      // R
+        push argument 1   // D 
+        sub       // (R - D)
+        pop local 1     // R postavimo na (R - D)
+        goto LOOP
+
+label L
+    push local 0
+    return     // vratimo Q

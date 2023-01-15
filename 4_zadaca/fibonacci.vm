@@ -1,0 +1,21 @@
+function fibonacci 1
+//// provjerimo je li nas broj manji od 3 zbog rubnih slucajeva
+    push argument 0  
+    push constant 3
+    lt /// nas broj je manji od 3
+    if-goto L
+        push argument 0
+        push constant 1
+        sub     // racunamo (n - 1) kako bismo rekurzivno pozvali fib na kraju
+        call fibonacci.fibonacci 1 /// racunamo fib(n-1)
+        push argument 0
+        push constant 2
+        sub     //  racunamo nas (n - 2)
+        call fibonacci.fibonacci 1 /// fib(n-2)
+        add /// zbrajamo fib(n-1) + fib(n-2)                        
+        return // vratimo zbroj
+
+/// label L vraca nam 1 u slucaju da je nas zadan broj manji od 3, fib(1)=fib(2)=1
+label L
+    push constant 1      
+    return
