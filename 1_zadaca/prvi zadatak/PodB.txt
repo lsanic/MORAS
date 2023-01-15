@@ -1,0 +1,14 @@
+CHIP PodB
+{
+ IN a, b ,c;
+ OUT out;
+
+ PARTS:
+   Not(a= b, out = out1)
+   Not(a= c, out = out2)
+   And(a= out1, b=out2, out = out3)
+   And(a= out2, b= a, out = out)
+
+
+
+}
