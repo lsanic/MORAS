@@ -1,0 +1,66 @@
+class QuickSort
+{
+    function void Swap (Array A, int x, int y)
+    {
+        var int temp;
+        let temp = A[x];
+        let A[x] = A[y];
+        let A[y] = temp;
+        return;
+    }
+
+    function int Partition (Array A, int lo, int hi)
+    {
+        var int pivot, i, j;
+
+        let pivot = A[hi];
+        let i = lo - 1;
+        let j = lo;
+
+        while(j < hi)
+        {
+            if(A[j] < pivot)
+            {
+                let i = i + 1;
+                do QuickSort.Swap(A, i, j);
+            }
+
+            let j = j + 1;
+        }
+
+        do QuickSort.Swap(A, i+1 , hi);
+
+        return (i+1);
+    }
+
+    function void QuiickSort (Array A, int lo, int hi)
+    {
+        var int p;
+
+        if (lo < hi)
+        {
+            let p = QuickSort.Partition(A, lo, hi);
+
+            do QuickSort.QuiickSort(A, lo, p - 1);
+            do QuickSort.QuicckSort(A, p + 1, hi);
+        }
+
+
+        return;
+    }
+
+   function void Print (Array A, int n)
+    {
+        var int x;
+
+        while (x < n)
+        {
+            do Output.printInt(arr[x]);
+            do Output.printString(" ");
+            let x = x + 1;
+        }
+
+        return;
+    }
+
+}
