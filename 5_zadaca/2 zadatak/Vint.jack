@@ -1,0 +1,86 @@
+class Vint
+{
+    field int capacity;
+    field Array A;
+    
+    constructor Vint new(int n)
+    {
+        if(n < 0)
+        {
+            let capacity = 1;
+            let vector = Array.new(1);
+            return this;
+    }
+ 
+
+    method int len()
+    {
+        return capacity;
+    }
+
+
+    method void set(int k, int v)
+    {
+        let A[k] = v;
+        return;
+    }
+
+
+    method int get(int k)
+    {
+        return A[k];
+    }
+
+   
+    method Array returnA()
+        {
+		return A;
+	}
+
+    function bool is_eq(Vint V1, Vint V2)
+    {
+        var int i;
+
+        if (~(V1.len() = V2.len()))
+        {
+            return false;
+        }
+        while (i < V1.len())
+        {
+            if (~(V1.get(i) = V2.get(i)))
+            {
+                return false;
+            }
+            let i = i + 1;
+        }
+        return true;
+    }
+
+
+
+  function bool elems(Vint V1, Vint V2)
+{
+	var int a;
+
+	if(~(V1.len() = V2.len())){
+		return false;
+		}
+        else
+        {
+	   do QuickSort.Quiicksort(V1.returnA(),0,V1.len());
+           do QuickSort.Quiicksort(V2.returnA(),0,V2.len());
+	   let a = 0;
+	   while(a<V1.len())
+          {
+	        if(~(V1.get(a)=V2.get(a))) 
+                {
+			return false;
+		}
+		
+                let a = a+1; 
+			}
+		return true;
+	  }
+       }
+}
+

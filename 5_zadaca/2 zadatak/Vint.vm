@@ -1,0 +1,136 @@
+function Vint.len 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Vint.set 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 1
+add
+push argument 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Vint.get 0
+push argument 0
+pop pointer 0
+push argument 1
+push this 1
+add
+pop pointer 1
+push that 0
+return
+function Vint.returnA 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Vint.is_eq 1
+push argument 0
+call Vint.len 1
+push argument 1
+call Vint.len 1
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 0
+push argument 0
+call Vint.len 1
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push local 0
+call Vint.get 2
+push argument 1
+push local 0
+call Vint.get 2
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+return
+function Vint.elems 1
+push argument 0
+call Vint.len 1
+push argument 1
+call Vint.len 1
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+goto IF_END0
+label IF_FALSE0
+push argument 0
+call Vint.returnA 1
+push constant 0
+push argument 0
+call Vint.len 1
+call QuickSort.Quiicksort 3
+pop temp 0
+push argument 1
+call Vint.returnA 1
+push constant 0
+push argument 1
+call Vint.len 1
+call QuickSort.Quiicksort 3
+pop temp 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 0
+call Vint.len 1
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push local 0
+call Vint.get 2
+push argument 1
+push local 0
+call Vint.get 2
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+return
+label IF_END0
