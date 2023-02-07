@@ -1,0 +1,3 @@
+
+class JackError(Exception):
+    pass
